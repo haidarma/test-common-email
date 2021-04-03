@@ -179,5 +179,12 @@ public class EmailTest {
 		this.email.setSentDate(date);
 		
 	}
+	
+	@Test
+	public void testgetSocketConnectionTimeout() {
+		
+		email.setSocketConnectionTimeout(60000);
+		email.getSocketConnectionTimeout();
+	}
 
 }
