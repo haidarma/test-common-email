@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotSame;
 
+import java.util.Date;
 import java.util.Properties;
 
 import javax.mail.Session;
@@ -155,6 +156,27 @@ public class EmailTest {
 		
 		email.setHostName(null);
 		email.buildMimeMessage();
+		
+	}
+	
+	@Test
+	public void testgetSentDate() {
+		
+		int year = 1;
+		int month = 1;
+		int min = 60;
+		int hrs = 3;
+		int date =2 ;
+		Date d = new Date(year, month, date, hrs, min);
+		
+		email.setSentDate(d);
+		email.getSentDate();
+	}
+	
+	@Test
+	public void testgetSentDateNull() {
+		Date date = null;
+		this.email.setSentDate(date);
 		
 	}
 
