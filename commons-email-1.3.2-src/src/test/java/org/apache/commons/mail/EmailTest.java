@@ -1,6 +1,7 @@
 package org.apache.commons.mail;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.After;
 import org.junit.Before;
@@ -37,5 +38,14 @@ public class EmailTest {
 		
 		assertEquals(3, email.getBccAddresses().size());
 	}
+	
+	@Test
+	public void testAddCc() throws Exception{
+		
+		email.addCc(TEST_EMAIL);
+		
+		assertFalse(email.ccList.isEmpty());
+	}
+
 
 }
