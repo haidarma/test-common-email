@@ -186,5 +186,16 @@ public class EmailTest {
 		email.setSocketConnectionTimeout(60000);
 		email.getSocketConnectionTimeout();
 	}
+	
+	@Test
+	public void testsetFrom() throws EmailException {
+		/* 
+		 * This already has 100% coverage from the other junit tests
+		 * Specifically the buildMimeMessage tests covers this
+		 * But if they didnt this is how you would test this method
+		 */
+		
+		email.setFrom("d@d.com");
+	}
 
 }
