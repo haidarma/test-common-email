@@ -2,6 +2,7 @@ package org.apache.commons.mail;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotSame;
 
 import org.junit.After;
 import org.junit.Before;
@@ -45,6 +46,14 @@ public class EmailTest {
 		email.addCc(TEST_EMAIL);
 		
 		assertFalse(email.ccList.isEmpty());
+	}
+	
+	@Test
+	public void testAddReplyTo() throws Exception{
+		email.addReplyTo(TEST_EMAIL, TEST_NAME);
+		
+		assertNotSame(TEST_EMAIL, TEST_NAME);
+		
 	}
 
 
