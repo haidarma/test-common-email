@@ -76,5 +76,38 @@ public class EmailTest {
 		email.addHeader(TEST_NAME, value);
 	}
 
+	@Test
+	public void testbuildMimeMessage() throws EmailException {
+		email.setHostName("localhost");
+		email.setSmtpPort(1234);
+		email.addTo(TEST_EMAILS);
+		email.addBcc(TEST_EMAILS);
+		email.addCc(TEST_EMAIL);
+		email.addReplyTo("hi@cc.com");
+		email.setFrom("d@d.com");
+		email.setSubject("test mail");
+		email.addHeader("some", "thing");
+		email.setContent("test", "text/plain");
+		email.setCharset("ISO-8859-1");
+		email.setMsg("Hello");
+		email.buildMimeMessage();
+		
+	}
+	
+	@Test
+	public void testbuildMimeMessageNull() throws EmailException {
+		email.setHostName("localhost");
+		email.setSubject("test mail");
+		email.addTo(TEST_EMAILS);
+		email.addBcc(TEST_EMAILS);
+		email.addCc(TEST_EMAIL);
+		email.addReplyTo("hi@cc.com");
+		email.setFrom("d@d.com");
+		email.addHeader("some", "thing");
+		email.setContent("test", "text/plain");
+		email.charset = null;
+		email.setMsg("Hello");
+		email.buildMimeMessage();
+	}
 
 }
