@@ -137,5 +137,25 @@ public class EmailTest {
 		assertEquals("localhost", hostname);
 		
 	}
+	
+	@Test
+	public void testgetMailSession() throws EmailException {
+		Properties properties = new Properties(System.getProperties());
+		   
+        Session session = Session.getInstance(properties, null);
+        properties.getProperty(EmailConstants.MAIL_SMTP_SOCKET_FACTORY_FALLBACK, "false");
+        properties.getProperty(EmailConstants.MAIL_SMTP_FROM, "H@c.com");
+        email.setMailSession(session);
+        assertEquals(session, this.email.getMailSession());        
+
+	}
+	
+	@Test(expected = EmailException.class)
+	public void testgetMailSessionNull() throws EmailException {
+		
+		email.setHostName(null);
+		email.buildMimeMessage();
+		
+	}
 
 }
