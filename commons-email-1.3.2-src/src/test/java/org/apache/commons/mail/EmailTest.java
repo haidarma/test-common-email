@@ -56,5 +56,25 @@ public class EmailTest {
 		
 	}
 
+	@Test
+	public void testAddHeader() throws Exception{
+		email.addHeader(TEST_NAME, TEST_HEADER);
+		
+		assertFalse(email.headers.isEmpty());
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddHeaderNoName() throws Exception{
+		String name = null;
+		email.addHeader(name, TEST_HEADER);
+		
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddHeaderNoValue() {
+		String value = null;
+		email.addHeader(TEST_NAME, value);
+	}
+
 
 }
