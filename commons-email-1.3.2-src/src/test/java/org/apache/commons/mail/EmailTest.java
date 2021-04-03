@@ -4,6 +4,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotSame;
 
+import java.util.Properties;
+
+import javax.mail.Session;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -108,6 +112,30 @@ public class EmailTest {
 		email.charset = null;
 		email.setMsg("Hello");
 		email.buildMimeMessage();
+	}
+	
+	@Test
+	public void testgetHostNameWithNull()  {
+		email.setHostName(null);
+		assertEquals(null, email.getHostName());
+	}
+	
+	@Test
+	public void testGetSetHostNameWithSession()  {
+		Properties properties = new Properties();
+		
+		Session session = Session.getDefaultInstance(properties, null);
+		properties.put(EmailConstants.MAIL_HOST, "smtp.gmail.com");
+		email.setMailSession(session);
+		assertEquals("smtp.gmail.com", email.getHostName());
+	}
+	
+	@Test
+	public void testgetHostName()  {
+		email.setHostName("localhost");
+		String hostname = email.getHostName();
+		assertEquals("localhost", hostname);
+		
 	}
 
 }
