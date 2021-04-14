@@ -162,14 +162,8 @@ public class EmailTest {
 	@Test
 	public void testgetSentDate() {
 		
-		int year = 1;
-		int month = 1;
-		int min = 60;
-		int hrs = 3;
-		int date =2 ;
-		Date d = new Date(year, month, date, hrs, min);
-		
-		email.setSentDate(d);
+		/*Date d = new Date(year, month, date, hrs, min);*/
+	
 		email.getSentDate();
 	}
 	
